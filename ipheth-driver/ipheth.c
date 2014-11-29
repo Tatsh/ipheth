@@ -572,7 +572,11 @@ static int ipheth_probe(struct usb_interface *intf,
 	usb_set_intfdata(intf, dev);
 
 	SET_NETDEV_DEV(netdev, &intf->dev);
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0)
 	SET_ETHTOOL_OPS(netdev, &ops);
+#else
+    netdev->ethtool_ops = &ops;
+#endif
 
 	retval = register_netdev(netdev);
 	if (retval) {
