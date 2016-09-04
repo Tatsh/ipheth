@@ -64,6 +64,13 @@
 #define HAVE_NET_DEVICE_OPS     1
 #endif
 
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0))
+#define COMPAT_SET_TRANS_START(dev, val) \
+	(netdev_get_tx_queue(dev, 0)->trans_start = val)
+#else
+#define COMPAT_SET_TRANS_START(dev, val) (dev->trans_start = val)
+#endif
+
 #ifndef err
 #define err(format, arg...)					\
 	printk(KERN_ERR KBUILD_MODNAME ": " format "\n", ##arg)
@@ -457,7 +464,7 @@ static int ipheth_tx(struct sk_buff *skb, struct net_device *net)
 		dev->stats.tx_errors++;
 		dev_kfree_skb_irq(skb);
 	} else {
-		net->trans_start = jiffies;
+		COMPAT_SET_TRANS_START(net, jiffies);
 		dev->tx_skb = skb;
 
 		dev->stats.tx_packets++;
