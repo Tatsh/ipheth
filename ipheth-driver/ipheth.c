@@ -475,7 +475,11 @@ static int ipheth_tx(struct sk_buff *skb, struct net_device *net)
 	return NETDEV_TX_OK;
 }
 
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(5,6,0))
 static void ipheth_tx_timeout(struct net_device *net)
+#else
+static void ipheth_tx_timeout(struct net_device *net, unsigned int unused)
+#endif
 {
 	struct ipheth_device *dev = netdev_priv(net);
 
