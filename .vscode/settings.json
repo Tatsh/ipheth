@@ -1,0 +1,36 @@
+{
+  "C_Cpp.default.defines": [
+    "CONFIG_AS_ADX=1",
+    "CONFIG_AS_AVX2=1",
+    "CONFIG_AS_AVX=1",
+    "CONFIG_AS_CFI=1",
+    "CONFIG_AS_CFI_SECTIONS=1",
+    "CONFIG_AS_CFI_SIGNAL_FRAME=1",
+    "CONFIG_AS_SHA1_NI=1",
+    "CONFIG_AS_SHA256_NI=1",
+    "CONFIG_AS_SSSE3=1",
+    "KBUILD_BASENAME=\"ipheth\"",
+    "KBUILD_MODNAME=\"ipheth\"",
+    "MODULE=1",
+    "__KERNEL__=1"
+  ],
+  "C_Cpp.default.includePath": [
+    "/usr/src/linux/arch/x86/include/generated",
+    "/usr/src/linux/arch/x86/include",
+    "/usr/src/linux/include"
+  ],
+  "cSpell.ignoreWords": [
+    "cdma",
+    "err",
+    "giagio",
+    "hintf",
+    "ipad",
+    "kbuild",
+    "kfree",
+    "kmalloc",
+    "modname",
+    "netif",
+    "printk",
+    "udev"
+  ]
+}
